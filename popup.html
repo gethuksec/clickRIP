@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ClickRip by gethuksec</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>ClickRip</h1>
+    <p class="subtitle">by <strong>Gethuk Security. Read <a href="disclaimer.html" target="_blank">Disclaimer</a></strong></p>
+
+    <label for="urlInput">Enter target URL:</label>
+    <input type="text" id="urlInput" placeholder="https://target.site" />
+
+    <button id="checkBtn">Check Headers</button>
+    <div id="result" class="result-box">Waiting for input...</div>
+
+    <h3>Attack Simulations</h3>
+<ul class="attack-list">
+  <li>
+    <button class="attack-btn" data-attack="classic-iframe">Classic Transparent iFrame</button>
+    <span class="tooltip">❓
+      <span class="tooltiptext">iFrame transparan untuk mengelabui klik.</span>
+    </span>
+  </li>
+  <li>
+    <button class="attack-btn" data-attack="fake-ui">UI Redressing</button>
+    <span class="tooltip">❓
+      <span class="tooltiptext">Layer UI palsu untuk manipulasi klik.</span>
+    </span>
+  </li>
+  <li>
+    <button class="attack-btn" data-attack="cursor-spoofing">Cursor Spoofing</button>
+    <span class="tooltip">❓
+      <span class="tooltiptext">Menyesatkan posisi kursor pengguna.</span>
+    </span>
+  </li>
+  <li>
+    <button class="attack-btn" data-attack="likejacking">Likejacking</button>
+    <span class="tooltip">❓
+      <span class="tooltiptext">Klik jebakan untuk like/follow media sosial.</span>
+    </span>
+  </li>
+  <li>
+    <button class="attack-btn" data-attack="nested-iframes">Multiple Nested iFrames</button>
+    <span class="tooltip">❓
+      <span class="tooltiptext">Bypass proteksi lewat iframe bertingkat.</span>
+    </span>
+  </li>
+  <li>
+    <button class="attack-btn" data-attack="sandbox-bypass">Sandbox Bypass</button>
+    <span class="tooltip">❓
+      <span class="tooltiptext">Eksploitasi kelemahan sandbox iframe.</span>
+    </span>
+  </li>
+</ul>
+
+    <div class="footer">
+      <p>Educational and PoC use only</p>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
+
