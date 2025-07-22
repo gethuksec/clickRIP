@@ -5,6 +5,8 @@ Created by **Gethuk Security** ([@gethuksec](https://github.com/gethuksec))
 
 > Developed by **Gethuk Security** for educational and ethical penetration testing purposes only.
 
+![exampleUse](https://github.com/user-attachments/assets/fdbacdd1-f670-4d71-8383-dda8d5f774a1)
+
 ---
 
 ## 📜 Disclaimer
